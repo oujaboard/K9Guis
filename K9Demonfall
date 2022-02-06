@@ -1,0 +1,66 @@
+local DiscordLib = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/discord%20lib.txt")()
+
+local win = DiscordLib:Window("Scriptma Males")
+
+local serv = win:Server("Scriptma Male Scripts", "")
+
+local btns = serv:Channel("Demonfall")
+
+btns:Button("Calculate Trinket Price", function()
+getgenv()["IrisAd"] = true
+local Notification = loadstring(game:HttpGet("https://api.irisapp.ca/Scripts/IrisBetterNotifications.lua"))()
+local plr = game.Players.LocalPlayer
+local inv = plr.PlayerGui.Interface.HUD.MenuFrames.Inventory.Content:GetChildren()
+local price = game:GetService("ReplicatedStorage").Trinkets
+local cal_price = 0
+
+local function add_price(itemname,amount)
+   local item = price:FindFirstChild(itemname)
+   if item then
+       if not amount  then
+           amount = 1
+       end
+       cal_price = cal_price + (item.Configuration.Price.Value * amount)
+   end
+end
+for i,v in next,inv do
+   AMT = 1
+   if v:FindFirstChild("Amount") then
+       AMT = tonumber(v:FindFirstChild("Amount").Text)
+   end
+   add_price(v.Name,AMT)
+end
+
+spawn(function()
+    Notification.Notify("Trinket Price", cal_price, "rbxassetid://4914902889");
+end)
+end)
+
+
+
+btns:Button("Demonfall LeadMarker", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/LeadMarker/OpenSource/main/Demonfall.lua"))()
+end)
+
+btns:Button("Demonfall Lazyhub", function()
+    loadstring(game:HttpGet("https://github.com/LioK251/Scripts/raw/main/lazyhub.lua"))()
+end)
+
+btns:Button("Demonfall CandyLean", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/KeoneGithub/KeoneGithub/main/DemonCockCandy"))()
+end)
+
+
+local bnds = serv:Channel("Binds")
+
+bnds:Bind("Hide Menu", Enum.KeyCode.RightShift, function()
+    if script.Parent.Visible == true then
+        script.Parent.Visible = false
+    else
+        script.Parent.Visible = true
+    end
+end)
+
+local lbls = serv:Channel("Credits")
+
+lbls:Label("Discord UI by dawid#7205")

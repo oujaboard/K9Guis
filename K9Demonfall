@@ -38,8 +38,8 @@ end)
 
 
 
-btns:Button("Demonfall LeadMarker", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/LeadMarker/OpenSource/main/Demonfall.lua"))()
+btns:Button("Demonfall Kronos (LeadMarker)", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/LeadMarker/Scripts/main/KronosFall.lua"))()
 end)
 
 btns:Button("Demonfall Lazyhub", function()
